@@ -1,0 +1,19 @@
+:deobfCompileDummyTask
+:deobfProvidedDummyTask
+:eclipseClasspath
+Could not resolve: it.zerono.mods.zerocore:zerocore:1.10.2-0.0.4
+:eclipseJdt
+:eclipseProject
+:getVersionJson
+:extractNatives SKIPPED
+:extractUserdev UP-TO-DATE
+:getAssetIndex UP-TO-DATE
+:getAssets
+:makeStart
+:makeEclipseCleanRunClient UP-TO-DATE
+:makeEclipseCleanRunServer UP-TO-DATE
+:eclipse
+
+BUILD SUCCESSFUL
+
+Total time: 19.051 secs
