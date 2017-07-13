@@ -1,9 +1,6 @@
 package io.github.tehstoneman.playground;
 
-
-import io.github.tehstoneman.playground.event.EventManager;
 import io.github.tehstoneman.playground.proxies.CommonProxy;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -25,7 +22,7 @@ public class Playground
 	public static ModMetadata	modMetadata;
 
 	@Instance( value = ModInfo.MODID )
-	public static Playground		instance;
+	public static Playground	instance;
 
 	// Define proxies
 	@SidedProxy( clientSide = ModInfo.PROXY_LOCATION + "ClientProxy", serverSide = ModInfo.PROXY_LOCATION + "CommonProxy" )
@@ -34,7 +31,7 @@ public class Playground
 	@EventHandler
 	public void preInit( FMLPreInitializationEvent event )
 	{
-		//MinecraftForge.EVENT_BUS.register( EventManager.class );
+		// MinecraftForge.EVENT_BUS.register( EventManager.class );
 		proxy.preInit();
 	}
 

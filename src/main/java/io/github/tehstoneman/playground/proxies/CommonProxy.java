@@ -4,8 +4,6 @@ import com.google.common.collect.ImmutableMap;
 
 import io.github.tehstoneman.playground.ModInfo;
 import io.github.tehstoneman.playground.client.creativetab.PlaygroundTab;
-import io.github.tehstoneman.playground.common.block.PlaygroundBlocks;
-import io.github.tehstoneman.playground.common.item.PlaygroundItems;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.animation.ITimeValue;
 import net.minecraftforge.common.model.animation.IAnimationStateMachine;
@@ -18,8 +16,8 @@ public class CommonProxy
 	{
 		playgroundTab = new PlaygroundTab( ModInfo.MODID );
 
-		PlaygroundBlocks.RegisterBlocks();
-		PlaygroundItems.RegisterItems();
+		// PlaygroundBlocks.RegisterBlocks();
+		// PlaygroundItems.RegisterItems();
 
 		// GameRegistry.registerTileEntity( TileEntityLaserSource.class, "laserSource" );
 		// GameRegistry.registerTileEntity( TileEntityLaserTarget.class, "laserTarget" );

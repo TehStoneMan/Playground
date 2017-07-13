@@ -1,7 +1,11 @@
+This mapping 'snapshot_nodoc_20161220' was designed for MC 1.11! Use at your own peril.This mapping 'snapshot_nodoc_20161220' was designed for MC 1.11! Use at your own peril.
+
+:extractMcpMappings SKIPPED
+:deobfCompileDeobfDepTask0 SKIPPED
+:deobfCompileRemapDepSourcesTask1 SKIPPED
 :deobfCompileDummyTask
 :deobfProvidedDummyTask
 :eclipseClasspath
-Could not resolve: it.zerono.mods.zerocore:zerocore:1.10.2-0.0.4
 :eclipseJdt
 :eclipseProject
 :getVersionJson
@@ -9,11 +13,12 @@ Could not resolve: it.zerono.mods.zerocore:zerocore:1.10.2-0.0.4
 :extractUserdev UP-TO-DATE
 :getAssetIndex UP-TO-DATE
 :getAssets
+Current status: 697/1196   58%
 :makeStart
-:makeEclipseCleanRunClient UP-TO-DATE
-:makeEclipseCleanRunServer UP-TO-DATE
+:makeEclipseCleanRunClient
+:makeEclipseCleanRunServer
 :eclipse
 
 BUILD SUCCESSFUL
 
-Total time: 19.051 secs
+Total time: 8.876 secs
