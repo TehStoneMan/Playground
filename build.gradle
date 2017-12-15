@@ -12,7 +12,7 @@ buildscript
     }
     dependencies
     {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -33,11 +33,8 @@ group = "io.github.thestoneman.playground"
 archivesBaseName = "Playground"
 
 // java version
-sourceCompatibility = targetCompatibility = '1.8'
-compileJava
-{
-	sourceCompatibility = targetCompatibility = '1.8'
-}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 minecraft
 {
@@ -57,44 +54,44 @@ minecraft
 
 repositories
 {
-	maven
+    maven
+    {
+        name "RX14"
+        url "http://mvn.rx14.co.uk/repo/"
+    }
+    ivy
+    {
+        name "Thaumcraft"
+        artifactPattern "https://dl.dropboxusercontent.com/u/47135879/[module]-([classifier]-)[revision].[ext]"
+    }
+    ivy
+    {
+        name "MineTweaker3"
+        artifactPattern "http://minetweaker3.powerofbytes.com/download/[module]-([classifier]-)[revision].[ext]"
+    }
+    maven
+    {
+        name 'prog'
+        url "http://dvs1.progwml6.com/files/maven"
+    }
+	ivy
 	{
-    	// location of the maven that hosts JEI files
-    	name = "Progwml6 maven"
-    	url = "http://dvs1.progwml6.com/files/maven"
-  	}
-  	maven
-  	{
-    	// location of a maven mirror for JEI files, as a fallback
-    	name = "ModMaven"
-    	url = "modmaven.k-4u.nl"
-  	}
-	//ivy
-	//{
-    //    name "Botania"
-    //    artifactPattern "http://botaniamod.net/files/deobf/[module] [revision]-[classifier].[ext]"
-    //}
-    //ivy
-    //{
-    //    name "Thaumcraft"
-    //    url "https://dl.dropboxusercontent.com/u/47135879"
-    //    layout "pattern",
-    //    {
-    //    	artifact "[module]-[revision].[ext]"
-    //    }
-    //}
+        name "Botania"
+        artifactPattern "http://botaniamod.net/files/deobf/[module] [revision]-[classifier].[ext]"
+    }
 }
 
 dependencies
 {
-    //runtime "com.azanor.baubles:Baubles:${config.baubles_version}-deobf"
+    //compile name: "InventoryTweaks"   , group: "inventorytweaks", version: invtweaks_version, classifier: "deobf"
+    //compile name: "Armourers-Workshop", group: "riskyken.armourersWorkshop", version: aw_version, classifier: "api"
+    //compile name: "Thaumcraft"        , version: tc_version, classifier: "deobf"
+    compile name: "Botania"           , group: "vazkii.botania", version: botania_version, classifier: "deobf"
+    //runtime name: "Baubles"           , group: "com.azanor.baubles", version: baubles_version, classifier: "deobf"
+    //compile name: "MineTweaker3"      , group: "minetweaker", version: minetweaker_version, classifier: "Dev"
 
-    //compile name: "Botania"           , group: "vazkii.botania", version: botania_version, classifier: "deobf"
-
-	// compile against the JEI API but do not include it at runtime
-	deobfProvided "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}:api"
-	// at runtime, use the full JEI jar
-	runtime "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}"
+    deobfCompile "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}:api"
+    runtime "mezz.jei:jei_${config.minecraft_version}:${config.jei_version}"
 }
 
 

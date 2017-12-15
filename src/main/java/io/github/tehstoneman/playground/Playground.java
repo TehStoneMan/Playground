@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(	modid						= ModInfo.MODID,
 		name						= ModInfo.NAME,
 		version						= ModInfo.VERSION,
-		dependencies				= ModInfo.DEPENDENCIES,
+		//dependencies				= ModInfo.DEPENDENCIES,
 		acceptedMinecraftVersions	= ModInfo.MINECRAFT )
 //@formatter:on
 public class Playground
