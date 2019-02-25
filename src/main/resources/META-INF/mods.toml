@@ -1,0 +1,10 @@
+modLoader="javafml"
+loaderVersion="[25,)"
+[[mods]]
+modId="playground"
+version="${file.jarVersion}"
+displayName="Stoney's Playground"
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Base mod for all my mod development.
+'''

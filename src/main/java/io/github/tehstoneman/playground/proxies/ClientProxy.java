@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 
 import io.github.tehstoneman.playground.ModInfo;
 import io.github.tehstoneman.playground.event.EventManager;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.client.model.obj.OBJLoader;
