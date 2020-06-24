@@ -1,105 +1,49 @@
 package io.github.tehstoneman.playground;
 
-import java.util.stream.Collectors;
+import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
+import io.github.tehstoneman.playground.client.creativetab.PlaygroundItemGroup;
+import io.github.tehstoneman.playground.common.block.PlaygroundBlocks;
+import io.github.tehstoneman.playground.common.fluid.PlaygroundFluids;
+import io.github.tehstoneman.playground.common.item.PlaygroundItems;
+import io.github.tehstoneman.playground.proxies.ModNetwork;
+import net.minecraft.item.ItemGroup;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 
-@Mod( ModInfo.MODID )
+@Mod( ModInfo.MOD_ID )
 public class Playground
 {
 	// Directly reference a log4j logger.
-	private static final Logger LOGGER = LogManager.getLogger();
+	public static final Logger		LOGGER		= LogManager.getLogger();
+	public static final ItemGroup	ITEM_GROUP	= new PlaygroundItemGroup();
+
+	public static SimpleChannel		network		= ModNetwork.getNetworkChannel();
+
+	public static Random			RANDOM;
 
 	public Playground()
 	{
+		// Initialize random numbers
+		RANDOM = new Random();
+
+		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
 		// Register the setup method for modloading
-		FMLJavaModLoadingContext.get().getModEventBus().addListener( this::setup );
-		// Register the enqueueIMC method for modloading
-		FMLJavaModLoadingContext.get().getModEventBus().addListener( this::enqueueIMC );
-		// Register the processIMC method for modloading
-		FMLJavaModLoadingContext.get().getModEventBus().addListener( this::processIMC );
-		// Register the doClientStuff method for modloading
-		FMLJavaModLoadingContext.get().getModEventBus().addListener( this::doClientStuff );
+		// FMLJavaModLoadingContext.get().getModEventBus().addListener( this::setup );
 
 		// Register ourselves for server and other game events we are interested in
-		MinecraftForge.EVENT_BUS.register( this );
+		// MinecraftForge.EVENT_BUS.register( this );
+
+		PlaygroundBlocks.BLOCK_REGISTER.register( modEventBus );
+		PlaygroundItems.ITEM_REGISTER.register( modEventBus );
+		PlaygroundFluids.FLUID_REGISTER.register( modEventBus );
 	}
 
-	private void setup( final FMLCommonSetupEvent event )
-	{
-		// some preinit code
-		LOGGER.info( "HELLO FROM PREINIT" );
-		LOGGER.info( "DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName() );
-	}
-
-	private void enqueueIMC( final InterModEnqueueEvent event )
-	{
-		// some example code to dispatch IMC to another mod
-		InterModComms.sendTo( ModInfo.MODID, "helloworld", () ->
-		{
-			LOGGER.info( "Hello world from the MDK" );
-			return "Hello world";
-		} );
-	}
-
-	private void processIMC( final InterModProcessEvent event )
-	{
-		// some example code to receive and process InterModComms from other mods
-		LOGGER.info( "Got IMC {}", event.getIMCStream().map( m -> m.getMessageSupplier().get() ).collect( Collectors.toList() ) );
-	}
-
-	private void doClientStuff( final FMLClientSetupEvent event )
-	{
-		// do something that can only be done on the client
-		LOGGER.info( "Got game settings {}", event.getMinecraftSupplier().get().gameSettings );
-	}
-
-	// You can use SubscribeEvent and let the Event Bus discover methods to call
-	@SubscribeEvent
-	public void onServerStarting( FMLServerStartingEvent event )
-	{
-		// do something when the server starts
-		LOGGER.info( "HELLO from server starting" );
-	}
-
-	// You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-	// Event bus for receiving Registry Events)
-	@Mod.EventBusSubscriber( bus = Mod.EventBusSubscriber.Bus.MOD )
-	public static class RegistryEvents
-	{
-		@SubscribeEvent
-		public static void onBlocksRegistry( final RegistryEvent.Register< Block > blockRegistryEvent )
-		{
-			// register a new block here
-			LOGGER.info( "HELLO from Register Block" );
-		}
-	}
-
-	/**
-	 * Prepend the name with the mod ID, suitable for ResourceLocations such as
-	 * textures.
-	 * Adapted from MinecraftByExample
-	 *
-	 * @param name
-	 * @return "modid:name"
-	 */
-	public static String modAsset( String name )
-	{
-		return ModInfo.MODID + ":" + name;
-	}
+	// private void setup( final FMLCommonSetupEvent event ) {}
 }

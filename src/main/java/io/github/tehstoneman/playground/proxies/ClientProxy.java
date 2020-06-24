@@ -19,7 +19,7 @@ public class ClientProxy extends CommonProxy
 	{
 		super.preInit();
 
-		OBJLoader.INSTANCE.addDomain( ModInfo.MODID );
+		OBJLoader.INSTANCE.addDomain( ModInfo.MOD_ID );
 		MinecraftForge.EVENT_BUS.register( new EventManager() );
 
 		final ModelResourceLocation itemModelResourceLocation;
