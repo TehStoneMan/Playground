@@ -1,5 +1,7 @@
 modLoader="javafml"
-loaderVersion="[26,)"
+loaderVersion="[34,)"
+license="MIT"
+
 [[mods]]
 modId="playground"
 version="${file.jarVersion}"
@@ -8,3 +10,10 @@ displayName="Stoney's Playground"
 description='''
 Base mod for all my mod development.
 '''
+
+[[dependencies.playground]]
+    modId="forge"
+    mandatory=true
+    versionRange="[34.0.0,)"
+    ordering="NONE"
+    side="BOTH"

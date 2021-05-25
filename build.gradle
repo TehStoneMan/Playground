@@ -4,7 +4,9 @@ buildscript {
         jcenter()
         mavenCentral()
     }
-    dependencies { classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+    }
 }
 apply plugin: 'net.minecraftforge.gradle'
 
@@ -14,7 +16,7 @@ apply plugin: 'maven-publish'
 
 archivesBaseName = 'Playground'
 group = 'io.github.thestoneman.playground'
-version = "$minecraft_version-$version_major.$version_api.$version_minor.$version_patch"
+version = "${minecraft_version}-${mod_version}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -35,8 +37,9 @@ sourceSets {
 	}
 }
 
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'snapshot', version: '20200514-1.15.1'
+    mappings channel: 'snapshot', version: '20201028-1.16.3'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
     // accessTransformer = file('build/resources/main/META-INF/accesstransformer.cfg')
@@ -89,9 +92,24 @@ minecraft {
     }
 }
 
+repositories {
+	maven {
+	    // location of the maven that hosts JEI files
+	    name = "Progwml6 maven"
+	    url = "https://dvs1.progwml6.com/files/maven/"
+	}
+	maven {
+	    // location of a maven mirror for JEI files, as a fallback
+	    name = "ModMaven"
+	    url = "https://modmaven.k-4u.nl"
+	}
+}
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.15.2-31.2.0'
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    compileOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -143,7 +161,7 @@ jar {
         attributes ([
             "Specification-Title": "playground",
             "Specification-Vendor": "TehStoneMan",
-            "Specification-Version": "1", // We are version 1 of ourselves
+            "Specification-Version": "${minecraft_version}-${mod_version}",
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"TehStoneMan",

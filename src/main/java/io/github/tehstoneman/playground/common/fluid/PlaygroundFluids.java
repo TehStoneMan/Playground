@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class PlaygroundFluids
 {
-	public static final DeferredRegister< Fluid >		FLUID_REGISTER	= new DeferredRegister<>( ForgeRegistries.FLUIDS, ModInfo.MOD_ID );
+	public static final DeferredRegister< Fluid >		FLUID_REGISTER	= DeferredRegister.create( ForgeRegistries.FLUIDS, ModInfo.MOD_ID );
 
 	public static RegistryObject< ForgeFlowingFluid >	LIQUID_FART		= FLUID_REGISTER.register( "liquid_fart",
 			() -> new ForgeFlowingFluid.Source( FluidFart.properties ) );
