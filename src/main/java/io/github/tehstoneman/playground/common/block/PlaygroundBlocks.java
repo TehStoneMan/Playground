@@ -15,5 +15,5 @@ public class PlaygroundBlocks
 	public static final DeferredRegister< Block >		BLOCK_REGISTER	= DeferredRegister.create( ForgeRegistries.BLOCKS, ModInfo.MOD_ID );
 
 	public static RegistryObject< FlowingFluidBlock >	LIQUID_FART		= BLOCK_REGISTER.register( "liquid_fart",
-			() -> new FlowingFluidBlock( PlaygroundFluids.LIQUID_FART, AbstractBlock.Properties.from( Blocks.WATER ) ) );
+			() -> new FlowingFluidBlock( PlaygroundFluids.LIQUID_FART, AbstractBlock.Properties.copy( Blocks.WATER ) ) );
 }

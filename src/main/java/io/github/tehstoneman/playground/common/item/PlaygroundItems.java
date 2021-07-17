@@ -17,5 +17,5 @@ public class PlaygroundItems
 
 	public static RegistryObject<BucketItem>	FART_BUCKET		= ITEM_REGISTER.register( "fart_bucket",
 			() -> new  BucketItem( PlaygroundFluids.LIQUID_FART,
-					new Item.Properties().containerItem( Items.BUCKET ).maxStackSize( 1 ).group( Playground.ITEM_GROUP ) ));
+					new Item.Properties().craftRemainder( Items.BUCKET ).stacksTo( 1 ).tab( Playground.ITEM_GROUP ) ));
 }

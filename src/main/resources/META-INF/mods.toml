@@ -1,19 +1,19 @@
 modLoader="javafml"
-loaderVersion="[34,)"
+loaderVersion="[36,)"
 license="MIT"
 
 [[mods]]
 modId="playground"
-version="${file.jarVersion}"
+version="${version}"
 displayName="Stoney's Playground"
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Base mod for all my mod development.
+My personal space for testing and experimentation.
 '''
 
 [[dependencies.playground]]
     modId="forge"
     mandatory=true
-    versionRange="[34.0.0,)"
+    versionRange="[36.1.0,)"
     ordering="NONE"
     side="BOTH"

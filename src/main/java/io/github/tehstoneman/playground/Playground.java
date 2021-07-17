@@ -6,8 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.github.tehstoneman.playground.client.creativetab.PlaygroundItemGroup;
+import io.github.tehstoneman.playground.config.PlaygroundConfig;
 import io.github.tehstoneman.playground.proxies.ModNetwork;
 import net.minecraft.item.ItemGroup;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
@@ -26,6 +28,9 @@ public class Playground
 	{
 		// Initialize random numbers
 		RANDOM = new Random();
+		
+		// Load configuration options
+		PlaygroundConfig.register( ModLoadingContext.get() );
 
 		// final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
