@@ -10,7 +10,6 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-//@ObjectHolder( ModInfo.MOD_ID )
 public class PlaygroundItems
 {
 	public static final DeferredRegister< Item >		ITEM_REGISTER	= DeferredRegister.create( ForgeRegistries.ITEMS, ModInfo.MOD_ID );

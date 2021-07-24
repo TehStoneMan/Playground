@@ -12,7 +12,7 @@ public class PlaygroundFluids
 	public static final DeferredRegister< Fluid >		FLUID_REGISTER	= DeferredRegister.create( ForgeRegistries.FLUIDS, ModInfo.MOD_ID );
 
 	public static RegistryObject< ForgeFlowingFluid >	LIQUID_FART		= FLUID_REGISTER.register( "liquid_fart",
-			() -> new ForgeFlowingFluid.Source( FluidFart.properties ) );
+			() -> new ForgeFlowingFluid.Source( LiquidFartFluid.PROPERTIES ) );
 	public static RegistryObject< ForgeFlowingFluid >	FLOWING_FART	= FLUID_REGISTER.register( "flowing_fart",
-			() -> new ForgeFlowingFluid.Flowing( FluidFart.properties ) );
+			() -> new ForgeFlowingFluid.Flowing( LiquidFartFluid.PROPERTIES ) );
 }
