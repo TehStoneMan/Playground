@@ -6,28 +6,28 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.github.tehstoneman.playground.client.creativetab.PlaygroundItemGroup;
-import io.github.tehstoneman.playground.common.block.PlaygroundBlocks;
-import io.github.tehstoneman.playground.common.fluid.PlaygroundFluids;
-import io.github.tehstoneman.playground.common.item.PlaygroundItems;
 import io.github.tehstoneman.playground.config.PlaygroundConfig;
-import io.github.tehstoneman.playground.proxies.ModNetwork;
-import net.minecraft.item.ItemGroup;
+import io.github.tehstoneman.playground.network.ModNetwork;
+import io.github.tehstoneman.playground.world.item.PlaygroundItems;
+import io.github.tehstoneman.playground.world.level.block.PlaygroundBlocks;
+import io.github.tehstoneman.playground.world.level.fluid.PlaygroundFluids;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.network.simple.SimpleChannel;
+import net.minecraftforge.network.simple.SimpleChannel;
 
 @Mod( ModInfo.MOD_ID )
 public class Playground
 {
 	// Directly reference a log4j logger.
-	public static final Logger		LOGGER		= LogManager.getLogger();
-	public static final ItemGroup	ITEM_GROUP	= new PlaygroundItemGroup();
+	public static final Logger			LOGGER				= LogManager.getLogger();
+	public static final CreativeModeTab	CREATIVE_MODE_TAB	= new PlaygroundItemGroup();
 
-	public static SimpleChannel		network		= ModNetwork.getNetworkChannel();
+	public static SimpleChannel network = ModNetwork.getNetworkChannel();
 
-	public static Random			RANDOM;
+	public static Random RANDOM;
 
 	public Playground()
 	{
@@ -45,9 +45,9 @@ public class Playground
 		// Register ourselves for server and other game events we are interested in
 		// MinecraftForge.EVENT_BUS.register( this );
 
-		PlaygroundBlocks.BLOCK_REGISTER.register( modEventBus );
-		PlaygroundItems.ITEM_REGISTER.register( modEventBus );
-		PlaygroundFluids.FLUID_REGISTER.register( modEventBus );
+		PlaygroundBlocks.REGISTERY.register( modEventBus );
+		PlaygroundItems.REGISTERY.register( modEventBus );
+		PlaygroundFluids.REGISTERY.register( modEventBus );
 	}
 
 	// private void setup( final FMLCommonSetupEvent event ) {}

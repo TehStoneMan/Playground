@@ -1,10 +1,10 @@
 package io.github.tehstoneman.playground.client.creativetab;
 
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
-public class PlaygroundItemGroup extends ItemGroup
+public class PlaygroundItemGroup extends CreativeModeTab
 {
 	public PlaygroundItemGroup()
 	{
